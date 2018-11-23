@@ -16,6 +16,7 @@ public class ATMDispenseChain {
 	}
 
 	public static void main(String[] args) {
+
 		ATMDispenseChain atmDispenser = new ATMDispenseChain();
 		while (true) {
 			int amount = 0;
