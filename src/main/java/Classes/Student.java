@@ -1,3 +1,7 @@
+package Classes;
+
+import Command.Command;
+
 import java.util.Arrays;
 
 public class Student implements Pupil {
@@ -61,10 +65,14 @@ public class Student implements Pupil {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Classes.Student{" +
                 "secondName='" + secondName + '\'' +
                 ", marks=" + Arrays.toString(marks) +
                 ", subjects=" + Arrays.toString(subjects) +
                 '}';
+    }
+
+    public void setPrintCommand(Command command){
+        command.execute();
     }
 }
