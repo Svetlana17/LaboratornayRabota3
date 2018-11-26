@@ -1,0 +1,14 @@
+package Command;
+//Receiver   -класс к-му предназчен обект Command и располагает инф-цие
+// о споссобах вып. операций
+public class Light{
+     public Light(){  }
+   
+     public void turnOn(){
+        System.out.println("The light is on");
+     }
+
+     public void turnOff(){
+        System.out.println("The light is off");
+     }
+}
