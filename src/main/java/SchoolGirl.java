@@ -26,12 +26,12 @@ public class SchoolGirl implements Pupil {
         return registers[index].mark;
     }
 
-    @Override
+   // @Override
     public void setMarkAt(int index, int mark) {
         registers[index].mark = mark;
     }
 
-    @Override
+    //@Override
     public String getSubjectAt(int index) {
         return registers[index].subjectName;
     }

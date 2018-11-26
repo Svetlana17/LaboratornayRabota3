@@ -7,7 +7,7 @@ public class TurnOnLightCommand implements Command{
         this.theLight=light;
        }
 
-   public void execute(){
+   public void execute(Student student){
       theLight.turnOn();
    }
 }

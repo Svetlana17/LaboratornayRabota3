@@ -1,14 +1,12 @@
 package Command;
 
 public class PrintPupliRowCommand implements  Command {
-PrintPupli printPupli;
-
+    PrintPupli printPupli;
     public PrintPupliRowCommand(PrintPupli printPupli) {
         this.printPupli = printPupli;
     }
-
     @Override
-    public void execute() {
-        printPupli.printRow();
+    public void execute(Student student) {
+        printPupli.printRow(student);
     }
 }
