@@ -23,5 +23,7 @@ public class SerilazeStudent  {
         System.out.println(student2.getSecondName());
         student2.setMemento();
         System.out.println(student2.getSecondName());
+
+        /////////////////
     }
 }
