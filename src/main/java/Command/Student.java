@@ -4,9 +4,10 @@ import Classes.Pupil;
 
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Student implements Pupil {
+public class Student implements Pupil, Serializable {
 
     private static String secondName;
     private static int[] marks;
@@ -67,4 +68,5 @@ public class Student implements Pupil {
     public void setPrintCommand(Command command) throws IOException {
         command.execute(this);
     }
+
 }
