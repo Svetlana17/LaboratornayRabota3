@@ -3,15 +3,16 @@ package Command;
 import Classes.Pupil;
 
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Arrays;
 
 public class Student implements Pupil, Serializable {
 
-    private static String secondName;
-    private static int[] marks;
-    private static String[] subjects;
+//
+
+    private  String secondName;
+    private  int[] marks;
+    private  String[] subjects;
 
     public Student(String secondName, int initialCountOfSubjects) {
         this.secondName = secondName;
@@ -19,7 +20,12 @@ public class Student implements Pupil, Serializable {
         this.subjects = new String[initialCountOfSubjects];
 
     }
-   @Override
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    @Override
     public int getMarkAt(int index) {
         return marks[index];
     }
@@ -67,5 +73,49 @@ public class Student implements Pupil, Serializable {
     }
     public void setPrintCommand(Command command) throws IOException {
         command.execute(this);
+    }
+
+    public  void createMemento() throws IOException {
+        Memento.setState(this);
+    };
+
+    public void setMemento() throws IOException, ClassNotFoundException {
+      Student student=Memento.getState();
+       this.setSecondName(student.secondName);
+
+    };
+
+   public static  class  Memento{
+        Student student;
+        private static byte[] arBate;
+        public Memento(Student student) throws IOException {//создание
+          arBate=serialize(student);
+        }
+  public static Student getState() throws IOException, ClassNotFoundException {
+            return deserialize(arBate);
+  }
+  public  static  void  setState(Student student) throws IOException {
+      serialize(student);
+  }
+
+        public static byte[] serialize(Student obj) throws IOException {
+            try(ByteArrayOutputStream b = new ByteArrayOutputStream()){
+                try(ObjectOutputStream o = new ObjectOutputStream(b)){
+                    o.writeObject(obj);
+                               }
+              arBate=b.toByteArray();
+                               return b.toByteArray();
+            }
+        }
+
+
+        private static Student deserialize(byte[] bytes) throws IOException, ClassNotFoundException {
+            try(ByteArrayInputStream b = new ByteArrayInputStream(bytes)){
+                try(ObjectInputStream o = new ObjectInputStream(b)){
+                    return (Student)o.readObject();
+
+                }
+            }
+        }
     }
 }
