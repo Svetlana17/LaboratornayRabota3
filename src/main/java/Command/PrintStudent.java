@@ -8,7 +8,7 @@ public class PrintStudent {
     public  static  void  main(String  args[]) throws IOException {
         PrintPupli printPupli=new PrintPupli();
         Command printCol= new PrintPupilColCommand(printPupli);
-      Command printRow =new PrintPupliRowCommand(printPupli);
+        Command printRow =new PrintPupliRowCommand(printPupli);
         Student student=new Student("Ivanova", 5);
         student.setSubjectAt(0,"Geo");
         student.setSubjectAt(1, "English");

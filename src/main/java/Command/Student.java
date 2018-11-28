@@ -68,5 +68,4 @@ public class Student implements Pupil, Serializable {
     public void setPrintCommand(Command command) throws IOException {
         command.execute(this);
     }
-
 }
