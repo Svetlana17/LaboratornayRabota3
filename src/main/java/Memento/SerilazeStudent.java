@@ -25,5 +25,6 @@ public class SerilazeStudent  {
         System.out.println(student2.getSecondName());
 
         /////////////////
+        /////////////////
     }
 }
