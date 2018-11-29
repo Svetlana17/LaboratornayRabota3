@@ -6,24 +6,21 @@ import java.io.*;
 
 public class SerilazeStudent  {
     public static  void main(String args[]) throws IOException, ClassNotFoundException {
-        Student student=new Student("Petrov", 3);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(bos);
-        oos.writeObject(student);
-        oos.flush();
-        byte [] data = bos.toByteArray();
 
-        ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(data);
-        ObjectInputStream objectInputStream=new ObjectInputStream(byteArrayInputStream);
-        Student student1= (Student) objectInputStream.readObject();
-        System.out.println(student1.getSecondName());
+
+
         Student student2=new Student("Ivanova",3);
-        student2.setMemento();
-        student2.setSecondName("Jons");
-        System.out.println(student2.getSecondName());
-        student2.setMemento();
-        System.out.println(student2.getSecondName());
+        student2.setSubjectAt(0, "OOP");
+        student2.setMarkAt(0,4);
 
+        student2.setSubjectAt(0, "Math");
+        student2.setMarkAt(0, 5);
+        student2.createMemento();//cлепок тек.объекта
+        System.out.println(student2.toString());
+        student2.setSecondName("Jons");//изм. состояние
+        System.out.println(student2.toString());
+        student2.setMemento();//вернула состояние
+        System.out.println(student2.toString());
         /////////////////
         /////////////////
     }

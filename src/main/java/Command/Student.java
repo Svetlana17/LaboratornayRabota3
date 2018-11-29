@@ -76,36 +76,36 @@ public class Student implements Pupil, Serializable {
     }
 
     public  void createMemento() throws IOException {
-        Memento.setState(this);
+        Memento.setStudent(this);
     };
 
     public void setMemento() throws IOException, ClassNotFoundException {
-      Student student=Memento.getState();
+      Student student=Memento.getStudent();
        this.setSecondName(student.secondName);
 
     };
 
    public static  class  Memento{
-        Student student;
+
         private static byte[] arBate;
         public Memento(Student student) throws IOException {//создание
-          arBate=serialize(student);
+          serialize(student);
         }
-  public static Student getState() throws IOException, ClassNotFoundException {
+
+  public static Student getStudent() throws IOException, ClassNotFoundException {
             return deserialize(arBate);
   }
-  public  static  void  setState(Student student) throws IOException {
+  public  static  void  setStudent(Student student) throws IOException {
       serialize(student);
   }
 
-        public static byte[] serialize(Student obj) throws IOException {
+        public static void serialize(Student obj) throws IOException {
             try(ByteArrayOutputStream b = new ByteArrayOutputStream()){
                 try(ObjectOutputStream o = new ObjectOutputStream(b)){
                     o.writeObject(obj);
                                }
               arBate=b.toByteArray();
-                               return b.toByteArray();
-            }
+           }
         }
 
 
